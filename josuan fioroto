@@ -1,0 +1,45 @@
+Como Planejar e Executar a Migração para AWS
+
+Primeiro de tudo, a gente precisa entender como a aplicação funciona agora:
+- O que ela usa? Quais servidores, bancos de dados e outras coisas são necessárias pra ela rodar?
+- Onde ela dá problema? Vamos ver onde ela engasga, onde o desempenho cai e onde não escala direito.
+
+ Escolhendo os Serviços AWS Certos:
+Depois de entender o que temos, é hora de mapear isso para os serviços da AWS:
+- EC2: A gente vai precisar dessas instâncias pra rodar nossos servidores na nuvem.
+- RDS: Para o banco de dados, usamos o RDS, que é um banco gerenciado pela AWS. Isso ajuda porque eles cuidam da parte chata como backups, updates, etc.
+- S3: Se tivermos que guardar arquivos (tipo imagens, documentos), o S3 é perfeito pra isso.
+- Load Balancer: Pra distribuir o tráfego entre os servidores, a gente configura um Load Balancer.
+
+Mãos à Obra na Migração:
+Agora é a parte de colocar a mão na massa:
+- Criando as Instâncias EC2: A gente sobe os servidores lá na AWS.
+- Transferindo o Banco de Dados: Mover o banco de dados para o RDS.
+- Configurar o Load Balancer: Assim, o tráfego é distribuído e não sobrecarrega um servidor só.
+- Testes, Testes e Mais Testes: A gente vai testar bastante pra garantir que tudo está funcionando na nova casa.
+
+ Como Evitar Problemas Durante a Migração
+
+ Migração sem Derrubar o Sistema:
+- Migração em Fases: Em vez de migrar tudo de uma vez, a gente migra por partes. Isso ajuda a manter a aplicação rodando durante a migração.
+- Testes de Staging: A gente cria um ambiente de teste que imita o ambiente real. Antes de migrar pra valer, a gente faz todos os testes aqui.
+- DNS com Failover: A gente usa o Route 53 da AWS pra gerenciar o DNS. Se algo der errado, ele redireciona os usuários para a versão antiga até tudo estar certo.
+
+ Ferramentas para Monitoramento e Teste:
+
+- CloudWatch: Pra monitorar como está a performance da aplicação. Se algo estiver estranho, a gente vê na hora.
+- Auto Scaling: Isso é legal porque a aplicação vai aumentar ou diminuir os recursos sozinha, conforme o tráfego aumenta ou diminui.
+
+ Vantagens da AWS e Como Aproveitar
+
+ Escalabilidade e Performance:
+Depois de migrar, a aplicação vai poder escalar muito melhor. Quando muita gente acessar, a AWS aumenta os recursos automaticamente.
+
+ Custo Sob Medida:
+A gente só paga pelo que usar. Se a aplicação estiver com pouco tráfego, gastamos menos. Se ela bombar, a gente tem recursos garantidos sem precisar comprar mais hardware.
+
+ Disponibilidade:
+Com a AWS, podemos configurar a aplicação pra rodar em várias regiões, garantindo que ela fique no ar mesmo se algum servidor der problema.
+
+ Melhorias Contínuas:
+Depois da migração, a gente continua monitorando e ajustando. Se algo estiver lento, podemos aumentar os recursos ou ajustar alguma configuração. E o melhor: sem precisar mexer em hardware físico!
